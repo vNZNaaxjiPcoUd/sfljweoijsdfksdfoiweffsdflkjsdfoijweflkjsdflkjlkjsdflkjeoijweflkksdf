@@ -27,21 +27,23 @@
     // 替換成與上面相同的 Google Apps Script Web App URL
     const GAS_URL = 'https://script.google.com/macros/s/AKfycbx-zZPCI9kLiW7JbQ6gz10ey1b4f1d1EQlAVSd6zdC2DrAszbELQReOC93nND2WnF7S/exec';
     
-    // 取得網址路徑，例如訪問 https://me.go/A ，pathname 會是 "/A"
+    // 取得網址路徑，例如訪問 "https://me.go/A?dfd=bb&cc=ddd&ewer=dddd" ，pathname 會是 "/A"
     // 用 substring(1) 去除斜線，取得 "A"
     const path = window.location.pathname.substring(1);
+    const para = window.location.search;               // "?dfd=bb&cc=ddd&ewer=dddd"
     const messageDiv = document.getElementById('message');
 
     if (path) {
       // 帶上 path 參數發送 GET 請求
       console.log(path);
+      console.log(`${encodeURIComponent(path)}`);
       fetch(`${GAS_URL}?path=${encodeURIComponent(path)}`)
         .then(response => response.json())
         .then(data => {
           if (data.status === 'success' && data.url) {
             // 使用 replace() 跳轉，這樣使用者的瀏覽器上一頁才不會卡在 404 頁面
             console.log(data);
-            window.location.replace(data.url);
+            window.location.replace(data.url+para);
           } else {
             messageDiv.innerHTML = `<h2>找不到此連結 (404)</h2><p>您輸入的代碼 <b>${path}</b> 不存在。</p><a href="/">回首頁新增</a>`;
           }
