@@ -42,7 +42,7 @@
         .then(data => {
           if (data.status === 'success' && data.url) {
             // 使用 replace() 跳轉，這樣使用者的瀏覽器上一頁才不會卡在 404 頁面
-            console.log(data);
+            console.log(data,para);
             window.location.replace(data.url+para);
           } else {
             messageDiv.innerHTML = `<h2>找不到此連結 (404)</h2><p>您輸入的代碼 <b>${path}</b> 不存在。</p><a href="/">回首頁新增</a>`;
