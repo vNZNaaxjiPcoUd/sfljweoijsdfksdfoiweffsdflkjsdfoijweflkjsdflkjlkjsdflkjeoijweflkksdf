@@ -33,6 +33,7 @@
     const para = window.location.search;               // "?dfd=bb&cc=ddd&ewer=dddd"
     const messageDiv = document.getElementById('message');
     console.log(path, para);
+    document.title = path ; 
 
     if (path) {
       // 帶上 path 參數發送 GET 請求
