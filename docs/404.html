@@ -38,6 +38,8 @@
     if (path) {
       // 帶上 path 參數發送 GET 請求
       //path = "a";
+      console.log("1",path);
+      console.log("2",encodeURIComponent(path));
       fetch(`${GAS_URL}?path=${encodeURIComponent(path)}`)
         .then(response => response.json())
         .then(data => {
