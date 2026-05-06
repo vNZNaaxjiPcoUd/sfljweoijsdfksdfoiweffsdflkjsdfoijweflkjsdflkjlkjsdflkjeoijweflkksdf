@@ -52,13 +52,13 @@
             console.log("準備跳轉至:", targetUrl);
             window.location.replace(targetUrl);
           } else {
-            messageDiv.innerHTML = `<h2>找不到此連結 (404)</h2><p>您輸入的代碼 <b>${path}</b> 不存在。</p><a href="/">回首頁新增</a>`;
+            messageDiv.innerHTML = `<h2>找不到</h2><p>${path}</p>`;
             window.location.replace("https://freepacman.org/");
           }
         })
         .catch(error => {
           console.error("Fetch Error:", error);
-          messageDiv.innerHTML = '<h2>系統連線異常</h2><p>無法連線至資料庫，請稍後再試。</p>';
+          messageDiv.innerHTML = '<h2>連線不上</h2><p>請稍後再試。</p>';
           window.location.replace("https://freepacman.org/");
         });
     } else {
