@@ -25,17 +25,7 @@
   </div>
 
   <script src="s.js" defer></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const flowElement = document.getElementById("flow");
-        let dotCount = 1;
 
-        setInterval(() => {
-            dotCount = dotCount >= 10 ? 1 : dotCount + 1;
-            flowElement.textContent = "Going" + ".".repeat(dotCount);
-        }, 200);
-    });
-  </script>
 </body>
 </html>
 
